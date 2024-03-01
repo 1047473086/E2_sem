@@ -11,7 +11,7 @@ final_df = pd.DataFrame(columns=['SID', 'Group', 'Scenario', 'C++', 'Vul', 'Accu
 for i in range(len(df)):
     for case_num in range(1, 7):  
         new_row = {
-            'SID': len(final_df) + 1,
+            'SID': i + 1,
             'Group': '',  # Blank as per instruction
             'Scenario': '',  # Blank as per instruction
             'C++': df.loc[i, 'C++'],  # The data from the "C++" column
@@ -20,7 +20,7 @@ for i in range(len(df)):
             'Time': df.loc[i, f'Case{case_num}_duration'],  # Duration for each case
             'Confidence': df.loc[i, f'Case{case_num}_confidence']  # Confidence for each case
         }
-        final_df = final_df.append(new_row, ignore_index=True)
+        final_df = final_df._append(new_row, ignore_index=True)
 
 # Now final_df has the required format with 25*6 rows
 # If you need to save this DataFrame to a new CSV file:
